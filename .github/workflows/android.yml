@@ -11,6 +11,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        api-level: [34, 35, 36]
+      fail-fast: false 
+
     steps:
     - uses: actions/checkout@v4
 
@@ -19,19 +24,42 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Install Android SDK 35
+    # Cache Gradle
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    # Cache Android SDK per API level
+    - name: Cache Android SDK
+      id: cache-android
+      uses: actions/cache@v3
+      with:
+        path: /usr/local/lib/android/sdk
+        key: ${{ runner.os }}-android-sdk-${{ matrix.api-level }}
+        restore-keys: |
+          ${{ runner.os }}-android-sdk-
+
+    - name: Install Android Command Line Tools
+      if: steps.cache-android.outputs.cache-hit != 'true'
       run: |
         sudo mkdir -p /usr/local/lib/android/sdk/cmdline-tools
         cd /usr/local/lib/android/sdk/cmdline-tools
         curl -s https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -o cmdline-tools.zip
         sudo unzip -q cmdline-tools.zip -d .
+        sudo rm cmdline-tools.zip
         sudo mv cmdline-tools latest
+
+    - name: Set Android Env Vars
+      run: |
         echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
-        echo "PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH" >> $GITHUB_ENV
+        echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
+        echo "PATH=/usr/local/lib/android/sdk/cmdline-tools/latest/bin:/usr/local/lib/android/sdk/platform-tools:$PATH" >> $GITHUB_ENV
+
+    - name: Install SDK packages
+      if: steps.cache-android.outputs.cache-hit != 'true'
+      run: |
         yes | sdkmanager --licenses
-        sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+        sdkmanager "platform-tools" "platforms;android-${{ matrix.api-level }}" "build-tools;${{ matrix.api-level }}.0.0"
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -48,6 +76,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: app
+        name: app-android-${{ matrix.api-level }}
         path: app/build/outputs/apk/debug/app-debug.apk
-
