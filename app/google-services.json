@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "898297660063",
+    "project_id": "serenitea-a0936",
+    "storage_bucket": "serenitea-a0936.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898297660063:android:6da6c770ab00dce3bcd8aa",
+        "android_client_info": {
+          "package_name": "com.fake.serenitea"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpwRVGuAPL7nr4JflNgvCj82CTlw3VoqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898297660063:android:97673b57e995d6cfbcd8aa",
+        "android_client_info": {
+          "package_name": "com.fake.sereniteaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpwRVGuAPL7nr4JflNgvCj82CTlw3VoqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
