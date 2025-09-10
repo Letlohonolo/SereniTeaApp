@@ -2,6 +2,7 @@ package com.fake.sereniteaapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,14 +15,17 @@ class LandingPageActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_landing_page)
 
-        val auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser
+       val btnRegister = findViewById<Button>(R.id.btnLandingPageRegister)
+        val btnLogin = findViewById<Button>(R.id.btnLandingPageLogin)
 
-        if (user != null) {
-            startActivity(Intent(this, MainActivity::class.java))
-        } else {
-            startActivity(Intent(this, MainActivity::class.java))
+        btnRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
-        finish()
+
+        btnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
