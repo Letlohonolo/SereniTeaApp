@@ -12,7 +12,12 @@
           "package_name": "com.fake.serenitea"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "898297660063-agahbqp7l6gd7vksfjafbm3l6uhtbdct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBpwRVGuAPL7nr4JflNgvCj82CTlw3VoqE"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898297660063-agahbqp7l6gd7vksfjafbm3l6uhtbdct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +41,20 @@
           "package_name": "com.fake.sereniteaapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "898297660063-2c43k9o1ct09stlj9d7v3b578si5gjeq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fake.sereniteaapp",
+            "certificate_hash": "403e6c7c7a1c22f7f781651fdc97255d1dcc3b14"
+          }
+        },
+        {
+          "client_id": "898297660063-agahbqp7l6gd7vksfjafbm3l6uhtbdct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBpwRVGuAPL7nr4JflNgvCj82CTlw3VoqE"
@@ -39,7 +62,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898297660063-agahbqp7l6gd7vksfjafbm3l6uhtbdct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
