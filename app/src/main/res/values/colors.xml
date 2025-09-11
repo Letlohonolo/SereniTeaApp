@@ -6,4 +6,5 @@
     <color name="PrimaryButton">#A8D5BA</color>
     <color name="textBackground">#D9C9B6</color>
     <color name="haloBlue">#b6d6eb</color>
+    <color name="SecondaryBackground">#7B7263</color>
 </resources>

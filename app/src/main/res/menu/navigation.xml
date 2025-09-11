@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/journal"
+        android:title="Journal"/>
+
+    <item
+        android:id="@+id/motivation"
+        android:title="Motivation"/>
+
+    <item
+        android:id="@+id/progress"
+        android:title="Progress"/>
+
+    <item
+        android:id="@+id/garden"
+        android:title="Garden"/>
+
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"/>
+
+    <item
+        android:id="@+id/signOut"
+        android:title="SignOut"/>
+
+</menu>
