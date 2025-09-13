@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.motivation -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
-                R.id.settings -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.signOut -> {
                     auth.signOut()
                     startActivity(Intent(this, LoginActivity::class.java))
