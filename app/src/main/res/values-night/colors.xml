@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFFFF</color> <!-- Invert for dark -->
+    <color name="white">#FF000000</color>
+
+    <color name="Background">#121212</color> <!-- Standard dark background -->
+    <color name="PrimaryButton">#4CAF70</color> <!-- Darker earthy green -->
+    <color name="textBackground">#3A3A3A</color> <!-- Dark taupe/charcoal -->
+    <color name="haloBlue">#34515E</color> <!-- Muted dark blue -->
+    <color name="SecondaryBackground">#2C2C2C</color> <!-- Darker neutral -->
+</resources>
