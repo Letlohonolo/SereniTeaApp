@@ -15,6 +15,7 @@ googleid = "1.1.1"
 junit = "4.13.2"
 junitExt = "1.1.5"
 espresso = "3.5.1"
+recyclerview = "1.4.0"
 
 [plugins]
 android-application = { id = "com.android.application", version = "8.5.2" }
@@ -40,3 +41,4 @@ googleid = { module = "com.google.android.libraries.identity.googleid:googleid",
 junit = { module = "junit:junit", version.ref = "junit" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitExt" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }

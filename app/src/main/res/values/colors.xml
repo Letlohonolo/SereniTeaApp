@@ -7,4 +7,5 @@
     <color name="textBackground">#D9C9B6</color>
     <color name="haloBlue">#b6d6eb</color>
     <color name="SecondaryBackground">#7B7263</color>
+    <color name="ThirdBackground">#f7cac9</color>
 </resources>

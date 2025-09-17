@@ -6,7 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+let serviceAccount;
+try {
+  serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+} catch (err) {
+  console.error("Failed to parse FIREBASE_CONFIG:", err.message);
+  process.exit(1);
+}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -25,6 +31,12 @@ app.post("/addEntry", async (req, res) => {
     const { remoteId, title, content, dateIso, attachmentUri, createdAt } =
       req.body;
 
+    if (!title || !content) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Title and content are required." });
+    }
+
     const docRef = await db.collection("journal").add({
       remoteId,
       title,
@@ -36,6 +48,24 @@ app.post("/addEntry", async (req, res) => {
 
     res.json({ success: true, id: docRef.id });
   } catch (err) {
+    console.error("Error adding entry:", err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.get("/entries", async (req, res) => {
+  try {
+    const snapshot = await db
+      .collection("journal")
+      .orderBy("createdAt", "desc")
+      .get();
+    const entries = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    res.json({ success: true, entries });
+  } catch (err) {
+    console.error("Error fetching entries:", err);
     res.status(500).json({ success: false, error: err.message });
   }
 });

@@ -9,7 +9,7 @@ import retrofit2.http.DELETE
 interface JournalDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(entry: JournalEntity)
+    suspend fun insert(entry: JournalEntity) : Long
 
     @Update
     suspend fun update(entry: JournalEntity)
