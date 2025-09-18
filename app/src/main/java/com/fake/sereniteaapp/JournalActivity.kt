@@ -70,7 +70,7 @@ class JournalActivity : AppCompatActivity() {
         tvDate.text = sdfDisplay.format(Date())
 
         adapter = JournalAdapter(emptyList()) { entry ->
-
+            //TODO: open entry detail/edit screen
         }
 
         Entries.layoutManager = LinearLayoutManager(this)

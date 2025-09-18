@@ -12,11 +12,18 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         val db = AppDatabase.getInstance(application)
-        repo = JournalRepository(db.journalDao(), application, "https://sereniteaapp-2.onrender.com")
+        repo = JournalRepository(
+            dao = db.journalDao(),
+            context = application,
+            renderApiUrl = "https://sereniteaapp-2.onrender.com/addEntry"
+        )
     }
 
     fun entriesForDate(dateIso: String): LiveData<List<JournalEntity>> =
         repo.entriesForDateLive(dateIso)
+
+    fun allEntries(): LiveData<List<JournalEntity>> =
+        repo.allEntries()
 
     fun addEntry(entry: JournalEntity) {
         viewModelScope.launch(Dispatchers.IO) {

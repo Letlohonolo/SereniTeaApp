@@ -20,6 +20,8 @@ class JournalRepository (
 
     fun entriesForDateLive(dateIso: String) = dao.entriesForDate(dateIso)
 
+    fun allEntries() = dao.getAllEntries()
+
     suspend fun addLocalEntry(entry: JournalEntity) {
         dao.insert(entry)
         if (isOnline()) {
@@ -55,16 +57,14 @@ class JournalRepository (
         val body = json.toRequestBody("application/json; charset=utf-8".toMediaType())
 
         val request = Request.Builder()
-            .url(renderApiUrl)
+            .url("$renderApiUrl/addEntry") // Ensure correct endpoint
             .post(body)
             .build()
 
         try {
             client.newCall(request).execute().use { resp ->
                 if (resp.isSuccessful) {
-                    // Optionally parse server response for remoteId
-                    val responseBody = resp.body?.string()
-                    // If server returns remoteId, set it for now mark synced
+                    // ✅ mark as synced
                     val updated = entry.copy(isSynced = true)
                     dao.update(updated)
                 } else {
@@ -82,5 +82,11 @@ class JournalRepository (
         val caps = cm.getNetworkCapabilities(network) ?: return false
         return caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
+
+    // Matches your Render API response
+    data class ApiResponse(
+        val success: Boolean,
+        val id: String? = null
+    )
 
 }

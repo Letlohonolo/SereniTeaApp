@@ -10,15 +10,17 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun journalDao(): JournalDao
 
     companion object {
-        @Volatile private var INSTANCE: AppDatabase? = null
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
 
-        fun getInstance(context: Context): AppDatabase =
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: Room.databaseBuilder(
+        fun getInstance(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "journal_db"
                 ).build().also { INSTANCE = it }
             }
+        }
     }
 }
