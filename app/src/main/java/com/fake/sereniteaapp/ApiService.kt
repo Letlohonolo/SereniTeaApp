@@ -30,4 +30,7 @@ interface ApiService {
     @GET("entriesRequest")
     suspend fun getEntriesRequest(): ApiResponse
 
+    @GET("daily-quote")
+    suspend fun getDailyQuote(): Quote
+
 }

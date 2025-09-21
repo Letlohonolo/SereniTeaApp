@@ -129,7 +129,7 @@ class JournalActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.challenges -> startActivity(Intent(this, HomeActivity::class.java))
-                R.id.motivation -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.motivation -> startActivity(Intent(this, MotivationActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.Trends -> startActivity(Intent(this, TrendsActivity::class.java))
