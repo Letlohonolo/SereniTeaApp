@@ -17,7 +17,8 @@
         android:text="SereniTea"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:paddingBottom="24dp"/>
+        android:paddingBottom="24dp"
+        android:textColor="@color/black"/>
 
     <ImageView
         android:id="@+id/AppLogo"

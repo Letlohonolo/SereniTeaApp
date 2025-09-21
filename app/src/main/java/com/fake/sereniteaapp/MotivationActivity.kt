@@ -2,6 +2,7 @@ package com.fake.sereniteaapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -25,7 +27,9 @@ class MotivationActivity : AppCompatActivity() {
     private lateinit var navView: NavigationView
     private lateinit var toolbar: Toolbar
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var viewModel: QuoteViewModel
+    private val viewModel: QuoteViewModel by viewModels()
+    private lateinit var quoteTextView: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +37,6 @@ class MotivationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_motivation)
         val tvQuote = findViewById<TextView>(R.id.tvQuote)
         val tvAuthor = findViewById<TextView>(R.id.tvAuthor)
-        val btnShare = findViewById<Button>(R.id.btnShare)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -53,23 +56,40 @@ class MotivationActivity : AppCompatActivity() {
 
         setupNavigation()
 
-        // Observe LiveData from ViewModel
-        viewModel.quote.observe(this, Observer { quote ->
-            tvQuote.text = "\"${quote.text}\""
-            tvAuthor.text = "- ${quote.author}"
+//        // Observe LiveData from ViewModel
+//        viewModel.quote.observe(this, Observer { quote ->
+//            tvQuote.text = "\"${quote.text}\""
+//            tvAuthor.text = "- ${quote.author}"
+//        })
+//
+//        // Load the daily quote
+//        viewModel.loadDailyQuote()
 
-            btnShare.setOnClickListener {
-                val shareIntent = Intent().apply {
-                    action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "\"${quote.text}\" - ${quote.author}")
-                    type = "text/plain"
+        quoteTextView = findViewById(R.id.tvQuote)
+        fetchQuotesFromFirestore()
+    }
+
+    private fun fetchQuotesFromFirestore() {
+        db.collection("quotes")
+            .get()
+            .addOnSuccessListener { result ->
+                val firestoreQuotes = result.documents.mapNotNull { it.getString("text") }
+
+                Log.d("MotivationActivity", "Fetched ${firestoreQuotes.size} quotes from Firestore")
+
+                if (firestoreQuotes.isNotEmpty()) {
+                    val randomQuote = firestoreQuotes.random()
+                    quoteTextView.text = randomQuote
+                    Log.d("MotivationActivity", "Random Firestore quote = $randomQuote")
+                } else {
+                    quoteTextView.text = "No quotes found."
+                    Log.d("MotivationActivity", "Firestore collection is empty")
                 }
-                startActivity(Intent.createChooser(shareIntent, "Share via"))
             }
-        })
-
-        // Load the daily quote
-        viewModel.loadDailyQuote()
+            .addOnFailureListener { e ->
+                quoteTextView.text = "Failed to load quotes."
+                Log.e("MotivationActivity", "Error fetching quotes", e)
+            }
     }
 
     //enables the users navigation
