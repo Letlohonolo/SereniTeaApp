@@ -58,6 +58,15 @@
 
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnMood"
+                    android:text="Enter todays mood"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/PrimaryButton"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -29,4 +29,5 @@ interface ApiService {
 
     @GET("entriesRequest")
     suspend fun getEntriesRequest(): ApiResponse
+
 }

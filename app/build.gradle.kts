@@ -63,6 +63,7 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.firestore)
     testImplementation(libs.junit)

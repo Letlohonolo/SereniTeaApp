@@ -18,7 +18,7 @@ espresso = "3.5.1"
 recyclerview = "1.4.0"
 
 [plugins]
-android-application = { id = "com.android.application", version = "8.5.2" }
+android-application = { id = "com.android.application", version = "8.13.0" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.0.21" }
 google-gms-google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt"}

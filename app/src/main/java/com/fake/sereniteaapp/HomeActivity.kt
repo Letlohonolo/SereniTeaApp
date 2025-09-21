@@ -59,6 +59,10 @@ class HomeActivity : AppCompatActivity() {
         toggle.syncState()
 
         setupNavigation()
+
+        findViewById<Button>(R.id.btnMood).setOnClickListener{
+            startActivity(Intent(this, MoodLogActivity::class.java))
+        }
     }
 
     //enables the users navigation
@@ -66,10 +70,12 @@ class HomeActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             drawerLayout.closeDrawer(GravityCompat.START)
             when (menuItem.itemId) {
-                R.id.journal -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.journal -> startActivity(Intent(this, JournalActivity::class.java))
+                R.id.challenges -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.motivation -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.Trends -> startActivity(Intent(this, TrendsActivity::class.java))
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.signOut -> {
                     auth.signOut()

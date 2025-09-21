@@ -10,12 +10,20 @@
         android:title="Journal"/>
 
     <item
+        android:id="@+id/challenges"
+        android:title="Challanges"/>
+
+    <item
         android:id="@+id/motivation"
         android:title="Motivation"/>
 
     <item
         android:id="@+id/progress"
         android:title="Progress"/>
+
+    <item
+        android:id="@+id/Trends"
+        android:title="Trends"/>
 
     <item
         android:id="@+id/garden"
