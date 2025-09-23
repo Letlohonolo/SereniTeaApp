@@ -26,15 +26,6 @@
             android:name=".MoodLogActivity"
             android:exported="false" />
         <activity
-            android:name=".ChallengesListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChallengeDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChallengesActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddEntryActivity"
             android:exported="false" />
         <activity
