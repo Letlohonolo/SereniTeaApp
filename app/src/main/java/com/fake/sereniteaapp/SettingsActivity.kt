@@ -146,7 +146,7 @@ class SettingsActivity : AppCompatActivity() {
                 R.id.journal -> startActivity(Intent(this, JournalActivity::class.java))
                 R.id.challenges -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.motivation -> startActivity(Intent(this, HomeActivity::class.java))
-                R.id.progress -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.progress -> startActivity(Intent(this, ProgressActivity::class.java))
                 R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.home -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.signOut -> {

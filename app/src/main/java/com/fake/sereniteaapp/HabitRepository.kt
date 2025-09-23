@@ -14,55 +14,40 @@ class HabitRepository {
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private val today = dateFormat.format(Date())
 
-    fun addHabit(habit: Habit, onResult: (Boolean) -> Unit) {
+    fun addHabit(habit: Habit, callback: (Boolean) -> Unit) {
+        val uid = auth.currentUser?.uid ?: return callback(false)
+        habit.userId = uid
 
-        val doc = habitRef.document()
-        habit.id = doc.id
-        habit.lastCompletedDate = today
-        doc.set(habit)
+        val docRef = habitRef.document()
+        habit.id = docRef.id
+        docRef.set(habit)
+            .addOnSuccessListener { callback(true) }
+            .addOnFailureListener { callback(false) }
+    }
+
+    fun getHabits(callback: (List<Habit>) -> Unit) {
+        val uid = auth.currentUser?.uid ?: return callback(emptyList())
+
+        habitRef.whereEqualTo("userId", uid)
+            .get()
+            .addOnSuccessListener { result ->
+                val habits = result.toObjects(Habit::class.java)
+                callback(habits)
+            }
+            .addOnFailureListener { callback(emptyList()) }
+    }
+
+    fun updateHabit(habit: Habit, onResult: (Boolean) -> Unit) {
+        if (habit.id.isNullOrEmpty()) {
+            onResult(false)
+            return
+        }
+
+        habitRef.document(habit.id!!).set(habit)
             .addOnSuccessListener { onResult(true) }
             .addOnFailureListener { onResult(false) }
     }
 
-    fun getHabits(onResult: (List<Habit>) -> Unit) {
-        habitRef.get()
-            .addOnSuccessListener { snapshot ->
-                val list = mutableListOf<Habit>()
 
-                for (doc in snapshot.documents) {
-                    val habit = doc.toObject(Habit::class.java)
-                    if (habit != null) {
-                        habit.id = doc.id
-
-                        // Reset if lastCompletedDate is not today
-                        if (habit.lastCompletedDate != today) {
-                            habit.isCompleted = false
-                            habit.lastCompletedDate = today
-                            updateHabit(habit) {} // update Firestore
-                        }
-
-                        list.add(habit)
-                    }
-                }
-
-                onResult(list)
-            }
-    }
-
-//    fun getHabits(onResult: (List<Habit>) -> Unit) {
-//        habitRef.get()
-//            .addOnSuccessListener { snapshot ->
-//                val list = snapshot.toObjects(Habit::class.java)
-//                onResult(list)
-//            }
-//    }
-
-    fun updateHabit(habit: Habit, onResult: (Boolean) -> Unit) {
-        habit.id?.let {
-            habitRef.document(it).set(habit)
-                .addOnSuccessListener { onResult(true) }
-                .addOnFailureListener { onResult(false) }
-        }
-    }
 
 }

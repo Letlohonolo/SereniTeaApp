@@ -11,7 +11,7 @@ import java.util.Locale
 
 class HabitAdapter (
     private var habits: MutableList<Habit>,
-    private val onChecked: (Habit) -> Unit
+    private val updateHabitInFirebase: (Habit) -> Unit
 ) : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
 
     inner class HabitViewHolder(val binding: ItemHabitBinding) :
@@ -26,19 +26,34 @@ class HabitAdapter (
         val habit = habits[position]
         holder.binding.apply {
             habitName.text = habit.name
-            habitCheckBox.isChecked = habit.isCompleted
+
+            val today = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            habitCheckBox.setOnCheckedChangeListener(null)
+            habitCheckBox.isChecked = habit.lastCompletedDate == today
+
+
+
+            habitCheckBox.setOnCheckedChangeListener(null)
+
 
             habitCheckBox.setOnCheckedChangeListener { _, checked ->
-                habit.isCompleted = checked
+                if (checked) {
+                    if (habit.lastCompletedDate != today) {
+                        habit.isCompleted = true
+                        habit.lastCompletedDate = today
+                        updateHabitInFirebase(habit) // Persist change
+                    }
+                } else {
+                    // Optional: allow unchecking
+                    habit.isCompleted = false
+                    habit.lastCompletedDate = ""
+                    updateHabitInFirebase(habit)
+                }
+            }
 
-                // ✅ update lastCompletedDate whenever the user toggles a habit
-                habit.lastCompletedDate =
-                    SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-
-                onChecked(habit)
             }
         }
-    }
+
 
     override fun getItemCount(): Int = habits.size
 
