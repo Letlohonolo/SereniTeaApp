@@ -5,6 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fake.sereniteaapp.databinding.ItemHabitBinding
 import com.fake.sereniteaapp.Habit
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 class HabitAdapter (
     private var habits: MutableList<Habit>,
     private val onChecked: (Habit) -> Unit
@@ -26,6 +30,11 @@ class HabitAdapter (
 
             habitCheckBox.setOnCheckedChangeListener { _, checked ->
                 habit.isCompleted = checked
+
+                // ✅ update lastCompletedDate whenever the user toggles a habit
+                habit.lastCompletedDate =
+                    SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+
                 onChecked(habit)
             }
         }
