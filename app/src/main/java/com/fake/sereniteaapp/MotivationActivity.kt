@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -100,10 +101,11 @@ class MotivationActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             when (menuItem.itemId) {
                 R.id.journal -> startActivity(Intent(this, JournalActivity::class.java))
-                R.id.challenges -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.garden -> {
+                    Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
+                }
                 R.id.home -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, ProgressActivity::class.java))
-                R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.Trends -> startActivity(Intent(this, TrendsActivity::class.java))
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.signOut -> {

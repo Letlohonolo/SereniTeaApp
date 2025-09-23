@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
@@ -109,9 +108,11 @@ class AddEntryActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             when (menuItem.itemId) {
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
-                R.id.motivation -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.motivation -> startActivity(Intent(this, MotivationActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, ProgressActivity::class.java))
-                R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.garden -> {
+                    Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
+                }
                 R.id.home -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.signOut -> {
                     auth.signOut()

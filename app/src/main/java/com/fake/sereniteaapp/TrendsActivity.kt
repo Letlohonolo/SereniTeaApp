@@ -84,10 +84,11 @@ class TrendsActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             when (menuItem.itemId) {
                 R.id.journal -> startActivity(Intent(this, JournalActivity::class.java))
-                R.id.challenges -> startActivity(Intent(this, HomeActivity::class.java))
+                R.id.garden -> {
+                    Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
+                }
                 R.id.motivation -> startActivity(Intent(this, MotivationActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, ProgressActivity::class.java))
-                R.id.garden -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.home -> startActivity(Intent(this, HomeActivity::class.java))
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.signOut -> {
