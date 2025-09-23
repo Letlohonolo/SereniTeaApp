@@ -59,6 +59,29 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <Button
+                        android:id="@+id/btnAddHabit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add Habit"
+                        android:backgroundTint="@color/PrimaryButton"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/habitRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/ThirdBackground"/>
+
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/btnMood"
                     android:text="Enter todays mood"

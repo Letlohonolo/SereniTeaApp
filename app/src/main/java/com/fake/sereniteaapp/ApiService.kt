@@ -33,4 +33,5 @@ interface ApiService {
     @GET("daily-quote")
     suspend fun getDailyQuote(): Quote
 
+
 }

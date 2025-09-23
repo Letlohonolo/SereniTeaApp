@@ -29,6 +29,7 @@ class MotivationActivity : AppCompatActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private val viewModel: QuoteViewModel by viewModels()
     private lateinit var quoteTextView: TextView
+    private lateinit var authorTextView: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +67,7 @@ class MotivationActivity : AppCompatActivity() {
 //        viewModel.loadDailyQuote()
 
         quoteTextView = findViewById(R.id.tvQuote)
+        authorTextView = findViewById(R.id.tvAuthor)
         fetchQuotesFromFirestore()
     }
 
