@@ -37,49 +37,49 @@ I will be utilising GitHub as a means of storage. I will be creating various bra
 
 ## References 
 
-Android Developers, 2024. *CardView overview*. [online] Available at:
-< <https://developer.android.com/develop/ui/views/layout/cardview> >
-[Accessed 21 September 2025].
+Android Developers, 2024. *CardView overview*. [online] Available at:  
+< <https://developer.android.com/develop/ui/views/layout/cardview> >  
+[Accessed 21 September 2025].  
 
-Android Developers, 2024. *Dialogs*. [online] Available at:
-<<https://developer.android.com/develop/ui/views/components/dialogs>>
-[Accessed 21 September 2025].
+Android Developers, 2024. *Dialogs*. [online] Available at:  
+<<https://developer.android.com/develop/ui/views/components/dialogs>>  
+[Accessed 21 September 2025].  
 
-Android Developers, 2024. *Integrate Google Sign-In into Your Android App*. [online] Available at:
-< <https://developer.android.com/identity/legacy/gsi/legacy-sign-in> >
-[Accessed 15 September 2025].
+Android Developers, 2024. *Integrate Google Sign-In into Your Android App*. [online] Available at:  
+< <https://developer.android.com/identity/legacy/gsi/legacy-sign-in> >  
+[Accessed 15 September 2025].  
 
-Android Developers, 2024. *LayoutInflater*. [online] Available at:
-< <https://developer.android.com/reference/android/view/LayoutInflater> >
-[Accessed 21 September 2025].
+Android Developers, 2024. *LayoutInflater*. [online] Available at:  
+< <https://developer.android.com/reference/android/view/LayoutInflater> >  
+[Accessed 21 September 2025].  
 
-Android Developers, 2024. *Navigation drawer*. [online] Available at:
-< <https://developer.android.com/guide/navigation/navigation-ui> >
-[Accessed 29 August 2025].
+Android Developers, 2024. *Navigation drawer*. [online] Available at:  
+< <https://developer.android.com/guide/navigation/navigation-ui> >  
+[Accessed 29 August 2025].  
 
-Android Developers, 2024. *NavigationView*. [online] Available at:
-< <https://developer.android.com/reference/com/google/android/material/navigation/NavigationView> >
-[Accessed 29 August 2025].
+Android Developers, 2024. *NavigationView*. [online] Available at:  
+< <https://developer.android.com/reference/com/google/android/material/navigation/NavigationView> >  
+[Accessed 29 August 2025].  
 
-Android Developers, 2024. *notifyDataSetChanged() - RecyclerView.Adapter*. [online] Available at:
-< <https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter#notifyDataSetChanged()> >
-[Accessed 21 September 2025].
+Android Developers, 2024. *notifyDataSetChanged() - RecyclerView.Adapter*. [online] Available at:  
+< <https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter#notifyDataSetChanged()> >  
+[Accessed 21 September 2025].  
 
-Android Developers, 2024. *RecyclerView.Adapter*. [online] Available at:
-< <https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter> >
-[Accessed 25 April 2025].
+Android Developers, 2024. *RecyclerView.Adapter*. [online] Available at:  
+< <https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter> >  
+[Accessed 25 April 2025].  
 
-Android Developers, 2024. *RecyclerView overview*. [online] Available at:
-< <https://developer.android.com/guide/topics/ui/layout/recyclerview> >
-[Accessed 21 September 2025].
+Android Developers, 2024. *RecyclerView overview*. [online] Available at:  
+< <https://developer.android.com/guide/topics/ui/layout/recyclerview> >  
+[Accessed 21 September 2025].  
 
-Android Developers, 2024. *RecyclerView.ViewHolder*. [online] Available at:
-< <https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.ViewHolder> >
-[Accessed 21 September 2025].
+Android Developers, 2024. *RecyclerView.ViewHolder*. [online] Available at:  
+< <https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.ViewHolder> >  
+[Accessed 21 September 2025].  
 
-Android Developers, 2024. *ViewHolder pattern*. [online] Available at:
-< <https://developer.android.com/develop/ui/views/layout/recyclerview#view-holder> >
-[Accessed 21 September 2025 2025].
+Android Developers, 2024. *ViewHolder pattern*. [online] Available at:  
+< <https://developer.android.com/develop/ui/views/layout/recyclerview#view-holder> >  
+[Accessed 21 September 2025 2025].  
 
 Dentiskiller. 2025. *budget-api*. [Online]. Available at:  
 <<[https://www.geeksforgeeks.org/html/markdown-cheat-sheet/#escape-characters](https://github.com/Dentistkiller/budget-api)>>  
@@ -89,86 +89,7 @@ GeeksforGeeks. 2024. *Markdown Cheat Sheet*. [Online]. Available at:
 <<https://www.geeksforgeeks.org/html/markdown-cheat-sheet/#escape-characters>>  
 [Accessed 29 August 2025].
 
-Philipp, J., 2024. MPAndroidChart. [Source Code]. Available at: 
-<<https://github.com/PhilJay/MPAndroidChart>>
-[Accessed 23 September 2025].
+Philipp, J., 2024. MPAndroidChart. [Source Code]. Available at:  
+<<https://github.com/PhilJay/MPAndroidChart>>  
+[Accessed 23 September 2025].  
 
-
-
-
-
-
-
-
-
-
-
-Android Developers, 2024. CardView overview. [Online]. Available at:
-<https://developer.android.com/develop/ui/views/layout/cardview
->
-[Accessed 21 September 2025].
-
-Android Developers, 2024. Dialogs. [Online]. Available at:
-<https://developer.android.com/develop/ui/views/components/dialogs
->
-[Accessed 21 September 2025].
-
-Android Developers, 2024. Integrate Google Sign-In into Your Android App. [Online]. Available at:
-<https://developer.android.com/identity/legacy/gsi/legacy-sign-in
->
-[Accessed 15 September 2025].
-
-Android Developers, 2024. LayoutInflater. [Online]. Available at:
-<https://developer.android.com/reference/android/view/LayoutInflater
->
-[Accessed 21 September 2025].
-
-Android Developers, 2024. Navigation drawer. [Online]. Available at:
-<https://developer.android.com/guide/navigation/navigation-ui
->
-[Accessed 29 August 2025].
-
-Android Developers, 2024. NavigationView. [Online]. Available at:
-<https://developer.android.com/reference/com/google/android/material/navigation/NavigationView
->
-[Accessed 29 August 2025].
-
-Android Developers, 2024. notifyDataSetChanged() - RecyclerView.Adapter. [Online]. Available at:
-<https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter#notifyDataSetChanged()
->
-[Accessed 21 September 2025].
-
-Android Developers, 2024. RecyclerView.Adapter. [Online]. Available at:
-<https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.Adapter
->
-[Accessed 25 April 2025].
-
-Android Developers, 2024. RecyclerView overview. [Online]. Available at:
-<https://developer.android.com/guide/topics/ui/layout/recyclerview
->
-[Accessed 21 September 2025].
-
-Android Developers, 2024. RecyclerView.ViewHolder. [Online]. Available at:
-<https://developer.android.com/reference/androidx/recyclerview/widget/RecyclerView.ViewHolder
->
-[Accessed 21 September 2025].
-
-Android Developers, 2024. ViewHolder pattern. [Online]. Available at:
-<https://developer.android.com/develop/ui/views/layout/recyclerview#view-holder
->
-[Accessed 21 September 2025].
-
-Dentiskiller, 2025. budget-api. [Online]. Available at:
-<https://github.com/Dentistkiller/budget-api
->
-[Accessed 22 September 2025].
-
-GeeksforGeeks, 2024. Markdown Cheat Sheet. [Online]. Available at:
-<https://www.geeksforgeeks.org/html/markdown-cheat-sheet/#escape-characters
->
-[Accessed 29 August 2025].
-
-Philipp, J., 2024. MPAndroidChart. [Source Code]. Available at:
-<https://github.com/PhilJay/MPAndroidChart
->
-[Accessed 23 September 2025].
