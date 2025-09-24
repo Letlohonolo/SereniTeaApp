@@ -35,6 +35,9 @@ I will be utilising GitHub as a means of storage. I will be creating various bra
 3. Daily Quotes
 
 ## References 
+Dentiskiller. 2025. *budget-api*. [Online]. Available at: 
+<<https://github.com/Dentistkiller/budget-api>>
+[Accessed 28 September 2025].
 
 GeeksforGeeks. 2024. *Markdown Cheat Sheet*. [Online]. Available at:  
 <<https://www.geeksforgeeks.org/html/markdown-cheat-sheet/#escape-characters>>  
