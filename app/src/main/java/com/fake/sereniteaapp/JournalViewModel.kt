@@ -32,13 +32,6 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-
-//    fun addEntry(entry: JournalEntity) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repo.addLocalEntry(entry)
-//        }
-//    }
-
     fun updateEntry(entry: JournalEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repo.updateLocalEntry(entry)

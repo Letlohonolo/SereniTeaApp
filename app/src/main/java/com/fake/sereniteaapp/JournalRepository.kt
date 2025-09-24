@@ -16,8 +16,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 class JournalRepository (
     private val dao: JournalDao,
-    private val context: Context,
-//    private val renderApiUrl: String
+    private val context: Context
 ) {
 
     private val auth = FirebaseAuth.getInstance()
@@ -39,27 +38,19 @@ class JournalRepository (
                 .document(userId)
                 .collection("journal")
                 .add(data)
-                .await() // requires kotlinx-coroutines-play-services
+                .await()
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
     private val api = RetrofitClient.api
     private val gson = Gson()
-//    fun entriesForDateLive(dateIso: String) = dao.entriesForDate(dateIso)
-//    fun allEntries() = dao.getAllEntries()
+
 
     fun entriesForDateLive(dateIso: String): LiveData<List<JournalEntity>> =
         dao.entriesForDate(dateIso)
     fun allEntries(): LiveData<List<JournalEntity>> =
         dao.getAllEntries()
-
-//    private val client = OkHttpClient()
-//    private val gson = Gson()
-//
-//    fun entriesForDateLive(dateIso: String) = dao.entriesForDate(dateIso)
-//
-//    fun allEntries() = dao.getAllEntries()
 
     suspend fun addLocalEntry(entry: JournalEntity) {
         dao.insert(entry)
@@ -71,7 +62,7 @@ class JournalRepository (
 
     suspend fun updateLocalEntry(entry: JournalEntity) {
         dao.update(entry)
-        addEntryToFirebase(entry)
+        //addEntryToFirebase(entry)
         if (isOnline() && !entry.isSynced) {
             syncEntry(entry)
         }
@@ -98,7 +89,7 @@ class JournalRepository (
             val response = api.addEntryRequest(request)
 
             if (response.success) {
-                // ✅ mark as synced and save remoteId if returned
+                //  mark as synced and save remoteId if returned
                 val updated = entry.copy(
                     isSynced = true,
                     remoteId = response.id ?: entry.remoteId
@@ -106,44 +97,10 @@ class JournalRepository (
                 dao.update(updated)
             }
         } catch (e: Exception) {
-            // ❌ network/server error – keep unsynced
+            //  network/server error – keep unsynced
         }
     }
 
-
-
-//    private suspend fun syncEntry(entry: JournalEntity) = withContext(Dispatchers.IO) {
-//        val payload = mapOf(
-//            "localId" to entry.localId,
-//            "title" to entry.title,
-//            "content" to entry.content,
-//            "dateIso" to entry.dateIso,
-//            "attachmentUri" to entry.attachmentUri,
-//            "createdAt" to entry.createdAt
-//        )
-//
-//        val json = gson.toJson(payload)
-//        val body = json.toRequestBody("application/json; charset=utf-8".toMediaType())
-//
-//        val request = Request.Builder()
-//            .url("$renderApiUrl/addEntry") // Ensure correct endpoint
-//            .post(body)
-//            .build()
-//
-//        try {
-//            client.newCall(request).execute().use { resp ->
-//                if (resp.isSuccessful) {
-//                    // ✅ mark as synced
-//                    val updated = entry.copy(isSynced = true)
-//                    dao.update(updated)
-//                } else {
-//                    // server returned error — keep unsynced
-//                }
-//            }
-//        } catch (e: IOException) {
-//            // network error — keep unsynced
-//        }
-//    }
 
     private fun isOnline(): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
@@ -152,17 +109,6 @@ class JournalRepository (
         return caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
-//    private fun isOnline(): Boolean {
-//        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
-//        val network = cm.activeNetwork ?: return false
-//        val caps = cm.getNetworkCapabilities(network) ?: return false
-//        return caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET)
-//    }
 
-    // Matches your Render API response
-//    data class ApiResponse(
-//        val success: Boolean,
-//        val id: String? = null
-//    )
 
 }
