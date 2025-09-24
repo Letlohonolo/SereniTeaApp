@@ -21,7 +21,7 @@ The name of my application is SereniTea. This is a self-improvement  application
 
 ## Changes made
 1. I replace the challanges and the challanges tracking with habits. Instead of the users have set challanges to do the user will be able to add their own tasks that they want to turn into habits. These habits will be tracked and sent back to the user to visualize this.
-2. The API will only be used for the journals. The Journal aspect of the user will be the only part of the app that will be passed through the API then to Firebase.
+2. The API will only be used for the journals. The Journal aspect of the user will be the only part of the app that will be passed through the API then to Firebase. The image below shows the changes. ![UML Diagram](images/umlEditImge.png)
 3. I also changed how the trends and the progress will be displayed. I made use of graphs to visualise these two aspects to the user. 
 
 ## Utilisation of GitHub and GitHub Actions
