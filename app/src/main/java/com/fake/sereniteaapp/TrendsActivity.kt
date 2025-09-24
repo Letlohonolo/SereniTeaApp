@@ -33,12 +33,12 @@ class TrendsActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var toolbar: Toolbar
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var chart: LineChart
+    private lateinit var SummaryBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +47,11 @@ class TrendsActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         chart = findViewById(R.id.lineChart)
+        SummaryBtn = findViewById(R.id.SummaryBtn)
+
+        SummaryBtn.setOnClickListener {
+            startActivity(Intent(this, MonthlySummaryActivity::class.java))
+        }
 
         val uid = auth.currentUser?.uid
 
