@@ -2,8 +2,11 @@ package com.fake.sereniteaapp
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import okhttp3.*
 import java.io.IOException
@@ -16,6 +19,31 @@ class JournalRepository (
     private val context: Context,
 //    private val renderApiUrl: String
 ) {
+
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+    suspend fun addEntryToFirebase(entry: JournalEntity) {
+        val user = auth.currentUser ?: return
+        val userId = user.uid
+
+        val data = mapOf(
+            "title" to entry.title,
+            "content" to entry.content,
+            "dateIso" to entry.dateIso,
+            "attachmentUri" to entry.attachmentUri,
+            "createdAt" to entry.createdAt
+        )
+
+        try {
+            db.collection("users")
+                .document(userId)
+                .collection("journal")
+                .add(data)
+                .await() // requires kotlinx-coroutines-play-services
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
     private val api = RetrofitClient.api
     private val gson = Gson()
 //    fun entriesForDateLive(dateIso: String) = dao.entriesForDate(dateIso)
@@ -35,6 +63,7 @@ class JournalRepository (
 
     suspend fun addLocalEntry(entry: JournalEntity) {
         dao.insert(entry)
+        addEntryToFirebase(entry)
         if (isOnline()) {
             syncEntry(entry)
         }
@@ -42,6 +71,7 @@ class JournalRepository (
 
     suspend fun updateLocalEntry(entry: JournalEntity) {
         dao.update(entry)
+        addEntryToFirebase(entry)
         if (isOnline() && !entry.isSynced) {
             syncEntry(entry)
         }

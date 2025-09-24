@@ -27,6 +27,7 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
     fun addEntry(entry: JournalEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repo.addLocalEntry(entry)
+            repo.addEntryToFirebase(entry)
             repo.syncUnsynced()
         }
     }
