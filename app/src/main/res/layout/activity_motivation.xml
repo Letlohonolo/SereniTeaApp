@@ -54,23 +54,14 @@
                 android:padding="16dp"
                 android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/tvAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- Author"
-                android:textSize="16sp"
-                android:paddingTop="8dp"
-                android:gravity="center"
-                android:textColor="@color/black"/>
-
-<!--            <Button-->
-<!--                android:id="@+id/btnShare"-->
+<!--            <TextView-->
+<!--                android:id="@+id/tvAuthor"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:text="Share"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:backgroundTint="@color/PrimaryButton"-->
+<!--                android:text="- Author"-->
+<!--                android:textSize="16sp"-->
+<!--                android:paddingTop="8dp"-->
+<!--                android:gravity="center"-->
 <!--                android:textColor="@color/black"/>-->
 
         </LinearLayout>

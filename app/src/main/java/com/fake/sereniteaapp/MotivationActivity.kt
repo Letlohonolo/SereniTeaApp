@@ -38,7 +38,6 @@ class MotivationActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_motivation)
         val tvQuote = findViewById<TextView>(R.id.tvQuote)
-        val tvAuthor = findViewById<TextView>(R.id.tvAuthor)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -68,7 +67,6 @@ class MotivationActivity : AppCompatActivity() {
 //        viewModel.loadDailyQuote()
 
         quoteTextView = findViewById(R.id.tvQuote)
-        authorTextView = findViewById(R.id.tvAuthor)
         fetchQuotesFromFirestore()
     }
 
