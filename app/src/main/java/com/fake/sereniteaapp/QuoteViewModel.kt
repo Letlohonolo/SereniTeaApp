@@ -12,14 +12,14 @@ class QuoteViewModel : ViewModel() {
     private val _quote = MutableLiveData<Quote>()
     val quote: LiveData<Quote> get() = _quote
 
-    fun loadDailyQuote() {
-        viewModelScope.launch {
-            try {
-                val result = RetrofitClient.api.getDailyQuote()
-                _quote.value = result
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
+//    fun loadDailyQuote() {
+//        viewModelScope.launch {
+//            try {
+//                val result = RetrofitClient.api.getDailyQuote()
+//                _quote.value = result
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//        }
+//    }
 }

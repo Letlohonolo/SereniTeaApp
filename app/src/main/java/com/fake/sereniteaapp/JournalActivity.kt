@@ -121,6 +121,9 @@ class JournalActivity : AppCompatActivity() {
         super.onResume()
         // schedule sync worker when resume (attempt to sync)
         vm.syncAll()
+
+        //refresh the list in case new entries were added
+        observeEntriesForDate(selectedDateIso)
     }
 
     //enables the users navigation

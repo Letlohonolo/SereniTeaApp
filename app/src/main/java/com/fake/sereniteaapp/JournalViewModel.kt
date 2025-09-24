@@ -14,8 +14,7 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
         val db = AppDatabase.getInstance(application)
         repo = JournalRepository(
             dao = db.journalDao(),
-            context = application,
-            renderApiUrl = "https://sereniteaapp-2.onrender.com/addEntry"
+            context = application
         )
     }
 
@@ -28,8 +27,16 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
     fun addEntry(entry: JournalEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repo.addLocalEntry(entry)
+            repo.syncUnsynced()
         }
     }
+
+
+//    fun addEntry(entry: JournalEntity) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repo.addLocalEntry(entry)
+//        }
+//    }
 
     fun updateEntry(entry: JournalEntity) {
         viewModelScope.launch(Dispatchers.IO) {

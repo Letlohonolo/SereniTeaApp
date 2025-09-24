@@ -14,7 +14,7 @@ interface ApiService {
 
     // Add a new journal entry
     @POST("addEntry")
-    suspend fun addEntry(@Body entry: JournalEntity): Response<Void>
+    suspend fun addEntry(@Body entry: JournalRequest): Response<ApiResponse>
 
     // Get all journal entries (if your backend supports it)
     @GET("entries")
@@ -31,7 +31,7 @@ interface ApiService {
     suspend fun getEntriesRequest(): ApiResponse
 
     @GET("daily-quote")
-    suspend fun getDailyQuote(): Quote
+    suspend fun getDailyQuote(): Response<Quote>
 
 
 }

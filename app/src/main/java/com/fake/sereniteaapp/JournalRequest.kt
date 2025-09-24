@@ -13,7 +13,11 @@ data class JournalRequest(
     val createdAt: Long
 )
 
-data class ApiResponse(val success: Boolean, val id: String?)
+data class ApiResponse(
+    val success: Boolean,
+    val id: String?
+)
+
 
 //interface ApiService {
 //    @POST("/addEntry")
