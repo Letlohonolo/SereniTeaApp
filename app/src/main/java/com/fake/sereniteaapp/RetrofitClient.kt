@@ -4,6 +4,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
+
+    //Render URL
     private const val BASE_URL = "https://sereniteaapp-2.onrender.com/"
 
     val api: ApiService by lazy {

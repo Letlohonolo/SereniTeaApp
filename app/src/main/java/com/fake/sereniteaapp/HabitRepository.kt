@@ -42,7 +42,6 @@ class HabitRepository {
             onResult(false)
             return
         }
-
         habitRef.document(habit.id!!).set(habit)
             .addOnSuccessListener { onResult(true) }
             .addOnFailureListener { onResult(false) }

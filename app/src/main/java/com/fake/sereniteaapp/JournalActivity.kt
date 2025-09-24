@@ -119,7 +119,7 @@ class JournalActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // schedule sync worker when resume (attempt to sync)
+        // sync will happen
         vm.syncAll()
 
         //refresh the list in case new entries were added

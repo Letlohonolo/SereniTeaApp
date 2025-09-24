@@ -30,20 +30,15 @@ class MotivationActivity : AppCompatActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private val viewModel: QuoteViewModel by viewModels()
     private lateinit var quoteTextView: TextView
-    private lateinit var authorTextView: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_motivation)
-        val tvQuote = findViewById<TextView>(R.id.tvQuote)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-
-        val uid = auth.currentUser?.uid
-
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
@@ -57,19 +52,12 @@ class MotivationActivity : AppCompatActivity() {
 
         setupNavigation()
 
-//        // Observe LiveData from ViewModel
-//        viewModel.quote.observe(this, Observer { quote ->
-//            tvQuote.text = "\"${quote.text}\""
-//            tvAuthor.text = "- ${quote.author}"
-//        })
-//
-//        // Load the daily quote
-//        viewModel.loadDailyQuote()
 
         quoteTextView = findViewById(R.id.tvQuote)
         fetchQuotesFromFirestore()
     }
 
+    //Quotes are hardcoded into firebase and they will be fetched from there
     private fun fetchQuotesFromFirestore() {
         db.collection("quotes")
             .get()
@@ -78,6 +66,7 @@ class MotivationActivity : AppCompatActivity() {
 
                 Log.d("MotivationActivity", "Fetched ${firestoreQuotes.size} quotes from Firestore")
 
+                //the quotes are fetched and displayed at random
                 if (firestoreQuotes.isNotEmpty()) {
                     val randomQuote = firestoreQuotes.random()
                     quoteTextView.text = randomQuote

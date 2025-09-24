@@ -24,6 +24,10 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
     fun allEntries(): LiveData<List<JournalEntity>> =
         repo.allEntries()
 
+    /*
+    adds the entry to the local db
+    adds the unsynced entries to firebase
+    */
     fun addEntry(entry: JournalEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repo.addLocalEntry(entry)
@@ -38,6 +42,7 @@ class JournalViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    //syncs entries
     fun syncAll() {
         viewModelScope.launch(Dispatchers.IO) {
             repo.syncUnsynced()

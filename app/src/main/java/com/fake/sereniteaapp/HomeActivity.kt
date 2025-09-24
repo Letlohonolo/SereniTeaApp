@@ -20,7 +20,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
-
     private lateinit var binding: ActivityHomeBinding
     private lateinit var adapter: HabitAdapter
     private val repo = HabitRepository()
@@ -110,12 +109,18 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    /*load all the avaiable habits
+    will get all the data of the habits
+     */
     private fun loadHabits() {
         repo.getHabits { habits ->
             adapter.setData(habits)
         }
     }
 
+    /*
+    will show the dialog box so that the user can add a new habit
+     */
     private fun showAddHabitDialog() {
         val input = TextInputEditText(this)
         AlertDialog.Builder(this)

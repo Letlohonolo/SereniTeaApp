@@ -21,6 +21,8 @@ class JournalRepository (
 
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseFirestore.getInstance()
+
+    //entries are added to firebase
     suspend fun addEntryToFirebase(entry: JournalEntity) {
         val user = auth.currentUser ?: return
         val userId = user.uid
@@ -44,7 +46,6 @@ class JournalRepository (
         }
     }
     private val api = RetrofitClient.api
-    private val gson = Gson()
 
 
     fun entriesForDateLive(dateIso: String): LiveData<List<JournalEntity>> =

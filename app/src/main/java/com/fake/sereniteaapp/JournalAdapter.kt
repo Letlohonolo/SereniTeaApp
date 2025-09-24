@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 
-
+//Code Attribution
+//RecyclerView.Adapter
+//Android Developers(2024)
 class JournalAdapter(
     private var items: List<JournalEntity>,
     private val onClick: (JournalEntity) -> Unit
@@ -28,6 +30,9 @@ class JournalAdapter(
         return Holder(v)
     }
 
+    //Code Attribution
+    //RecyclerView.Adapter
+    //Android Developers(2024)
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val entry = items[position]
         holder.tvTitle.text = entry.title

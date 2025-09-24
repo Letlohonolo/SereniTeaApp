@@ -87,7 +87,6 @@ class ProgressActivity : AppCompatActivity() {
         }
     }
 
-//
 
     private fun showWeeklyTrend(lineChart: LineChart, habits: List<Habit>) {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())

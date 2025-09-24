@@ -5,6 +5,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 
+//Code Attribution
+//Migrate Room Database
+//Android Developers(2024)
 @Database(entities = [JournalEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun journalDao(): JournalDao

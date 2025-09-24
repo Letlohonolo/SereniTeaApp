@@ -28,6 +28,10 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        /*
+        * Code Attribution
+        * Integrate Google Sign-In into Your Android App
+        * Developers (2024)*/
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -75,6 +79,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * Code Attribution
+    * Integrate Google Sign-In into Your Android App
+    * Developers (2024)*/
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener { task ->

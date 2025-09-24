@@ -63,6 +63,9 @@ class AddEntryActivity : AppCompatActivity() {
         journalContent = findViewById(R.id.journalContent)
         tvAttachmentName = findViewById(R.id.tvAttachmentName)
 
+        /*the view model is being set up.
+        JournalViewModel manages the journal entries saving
+         */
         vm = ViewModelProvider(this).get(JournalViewModel::class.java)
         dateIso = intent.getStringExtra("dateIso") ?: SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
@@ -73,6 +76,9 @@ class AddEntryActivity : AppCompatActivity() {
             startActivityForResult(intent, 1234)
         }
 
+        /*
+        saves the journal entries to the local database entity
+         */
         btnSaveClose.setOnClickListener {
             val title = journalTitle.text.toString().trim()
             val content = journalContent.text.toString().trim()
@@ -95,7 +101,6 @@ class AddEntryActivity : AppCompatActivity() {
         if (requestCode == 1234 && resultCode == Activity.RESULT_OK) {
             pickedUri = data?.data
             tvAttachmentName.text = pickedUri?.lastPathSegment ?: "attachment"
-            // Persist permission for content URI
             pickedUri?.let { uri ->
                 contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
@@ -110,6 +115,7 @@ class AddEntryActivity : AppCompatActivity() {
                 R.id.settings -> startActivity(Intent(this, SettingsActivity::class.java))
                 R.id.motivation -> startActivity(Intent(this, MotivationActivity::class.java))
                 R.id.progress -> startActivity(Intent(this, ProgressActivity::class.java))
+                //tost as this prt will be implemented in prt 3
                 R.id.garden -> {
                     Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
                 }

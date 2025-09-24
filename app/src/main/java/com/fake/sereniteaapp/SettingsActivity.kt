@@ -101,7 +101,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        //Language change
+        //Language change- coming soon(prt 3)
 
         //Notifications toggle
         switchNotifications.setOnCheckedChangeListener { _, isChecked ->

@@ -72,6 +72,7 @@ class MonthlySummaryActivity : AppCompatActivity() {
         }
     }
 
+    //Loads the moods monthly summary
     private fun loadMonthlySummary(userId: String, year: Int, month: Int) {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, 1, 0, 0, 0)
@@ -80,6 +81,8 @@ class MonthlySummaryActivity : AppCompatActivity() {
         calendar.add(Calendar.MONTH, 1)
         val endOfMonth = calendar.timeInMillis
 
+        //will look for all the moods that are under the user that is logged in
+        //also checks the date to ensure that it is within the same month
         db.collection("users")
             .document(userId)
             .collection("moods")
@@ -88,7 +91,7 @@ class MonthlySummaryActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 val moodCounts = mutableMapOf<String, Int>()
-                val moodValues = mutableListOf<Float>() // for average calculation
+                val moodValues = mutableListOf<Float>()
 
                 for (doc in result) {
                     val mood = doc.getString("mood") ?: continue
@@ -103,6 +106,7 @@ class MonthlySummaryActivity : AppCompatActivity() {
             }
     }
 
+    //Summary is displayed
     private fun showSummary(moodCounts: Map<String, Int>, moodValues: List<Float>, year: Int, month: Int) {
         val monthName = SimpleDateFormat("MMMM", Locale.getDefault())
             .format(GregorianCalendar(year, month, 1).time)
@@ -117,7 +121,7 @@ class MonthlySummaryActivity : AppCompatActivity() {
         val avgMoodLabel = avgScore.toMoodLabel()
 
         val builder = StringBuilder("Mood Summary for $monthName $year:\n\n")
-        builder.append("🌟 Average Mood: $avgMoodLabel (${String.format("%.1f", avgScore)})\n\n")
+        builder.append("Average Mood: $avgMoodLabel (${String.format("%.1f", avgScore)})\n\n")
 
         for ((mood, count) in moodCounts) {
             builder.append("• $mood: $count times\n")
@@ -126,7 +130,7 @@ class MonthlySummaryActivity : AppCompatActivity() {
         summaryTextView.text = builder.toString()
     }
 
-    // Map moods to numbers (same as your TrendsActivity)
+    // Map moods to numbers
     private fun String.toFloatValue(): Float {
         return when (this) {
             "Happy" -> 5f
